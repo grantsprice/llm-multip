@@ -5,7 +5,7 @@ from streamlit_chat import message
 st.title("💬 Multip GPT")
 openai_api_key = st.secrets["chatbot_api_key"]
 if "messages" not in st.session_state:
-    st.session_state["messages"]= [{"role": "system", "content": "Respond as each of these three personalities to each prompt: \nPlato: and respond how plato would respond\nStalin: and respond how Stalin would respond\nGandhi: and respond how Gandhi would respond."}]
+    st.session_state["messages"]= [{"role": "system", "content": "Respond as each of these three personas to each prompt: \nPlato: and respond how plato would respond\nStalin: and respond how Stalin would respond\nGandhi: and respond how Gandhi would respond."}]
     st.session_state.messages.append({"role": "assistant", "content": "How can I help you?"})
 
 with st.form("chat_input", clear_on_submit=True):
