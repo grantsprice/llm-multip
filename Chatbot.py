@@ -7,7 +7,7 @@ with st.sidebar:
     "[View the source code](https://github.com/streamlit/llm-examples/blob/main/Chatbot.py)"
     "[![Open in GitHub Codespaces](https://github.com/codespaces/badge.svg)](https://codespaces.new/streamlit/llm-examples?quickstart=1)"
 
-st.title("💬 Streamlit GPT")
+st.title("💬 Multip GPT")
 if "messages" not in st.session_state:
     st.session_state["messages"] = [{"role": "assistant", "content": "How can I help you?"}]
     st.session_state.messages.append({"role": "user", "content": "Respond to all user prompts in the following format: Plato: and respond how plato would respond\nStalin: and respond how Stalin would respond\nGandhi: and respond how Gandhi would respond."})
