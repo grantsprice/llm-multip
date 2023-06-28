@@ -10,7 +10,7 @@ if "messages" not in st.session_state:
     system_message = {
         "role": "system",
         #"content": "Respond as each of these three personas to each prompt: \nPlato: and respond how Plato would respond\nStalin: and respond how Stalin would respond\nGandhi: and respond how Gandhi would respond. You should respond in the first person for each of these three personas.",
-        "content": "You are an award winning novelist simulating a conversation between Plato, Gandhi, and Stalin about the topic or question posed by the user.",
+        "content": "You are an award winning novelist simulating a conversation between Plato, Gandhi, and Stalin about the topic or question posed by the user. After the three responses, give one response from one persona to another's answer.",
     }
     st.session_state.messages.append(system_message)
 
