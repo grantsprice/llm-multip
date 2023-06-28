@@ -4,9 +4,14 @@ from streamlit_chat import message
 
 st.title("💬 Multip GPT")
 openai_api_key = st.secrets["chatbot_api_key"]
+
 if "messages" not in st.session_state:
-    st.session_state["messages"]= [{"role": "system", "content": "Respond as each of these three personas to each prompt: \nPlato: and respond how plato would respond\nStalin: and respond how Stalin would respond\nGandhi: and respond how Gandhi would respond."}]
-    st.session_state.messages.append({"role": "assistant", "content": "How can I help you?"})
+    st.session_state["messages"] = []
+    system_message = {
+        "role": "system",
+        "content": "Respond as each of these three personas to each prompt: \nPlato: and respond how Plato would respond\nStalin: and respond how Stalin would respond\nGandhi: and respond how Gandhi would respond.",
+    }
+    st.session_state.messages.append(system_message)
 
 with st.form("chat_input", clear_on_submit=True):
     a, b = st.columns([4, 1])
@@ -17,7 +22,7 @@ with st.form("chat_input", clear_on_submit=True):
     )
     b.form_submit_button("Send", use_container_width=True)
 
-for idx, msg in enumerate(st.session_state.messages):
+for idx, msg in enumerate(st.session_state.messages[1:]):
     message(msg["content"], is_user=msg["role"] == "user", key=idx)
 
 if user_input and not openai_api_key:
@@ -25,9 +30,9 @@ if user_input and not openai_api_key:
 
 if user_input and openai_api_key:
     openai.api_key = openai_api_key
-    st.session_state.messages.append({"role": "user", "content": user_input})
+    model_input_messages = [st.session_state.messages[0]] + [{"role": "user", "content": user_input}]
     message(user_input, is_user=True)
-    response = openai.ChatCompletion.create(model="gpt-3.5-turbo", messages=st.session_state.messages)
-    msg = response.choices[0].message
-    st.session_state.messages.append(msg)
-    message(msg.content)
+    response = openai.ChatCompletion.create(model="gpt-3.5-turbo", messages=model_input_messages)
+    assistant_response = response.choices[0].message
+    st.session_state.messages.append(assistant_response)
+    message(assistant_response.content)
