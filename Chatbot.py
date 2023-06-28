@@ -5,14 +5,6 @@ from streamlit_chat import message
 st.title("💬 Multip GPT")
 openai_api_key = st.secrets["chatbot_api_key"]
 
-with st.sidebar:
-        st.header("Configuration")
-        options = st.multiselect(
-        'What are your favorite colors',
-        ['Gandhi', 'Stalin', 'Plato', 'Confucius', 'Karl Marx', 'Epicurus', 'Friedrich Nietzsche', 'Socrates', 'Aristotle'],
-        ['Gandhi', 'Stalin', 'Plato'])
-        st.button("Go!", on_click=fresh_chat)
-        
 def fresh_chat():
     st.session_state["messages"] = []
     options_str = ', '.join(options)
@@ -22,6 +14,14 @@ def fresh_chat():
         "content": "You are an award winning novelist simulating a conversation between" + options_str + " about the topic or question posed by the user. After the three responses, give one response from one persona to another's answer.",
     }
     st.session_state.messages.append(system_message)
+        
+with st.sidebar:
+        st.header("Configuration")
+        options = st.multiselect(
+        'What are your favorite colors',
+        ['Gandhi', 'Stalin', 'Plato', 'Confucius', 'Karl Marx', 'Epicurus', 'Friedrich Nietzsche', 'Socrates', 'Aristotle'],
+        ['Gandhi', 'Stalin', 'Plato'])
+        st.button("Go!", on_click=fresh_chat)
     
 if "messages" not in st.session_state:
     fresh_chat()
