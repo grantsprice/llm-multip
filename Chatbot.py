@@ -8,8 +8,8 @@ openai_api_key = st.secrets["chatbot_api_key"]
 with st.sidebar:
         st.header("Configuration")
         options = st.multiselect(
-        'What are your favorite colors',
-        ['Gandhi', 'Stalin', 'Plato', 'Confucius', 'Karl Marx', 'Epicurus', 'Friedrich Nietzsche', 'Socrates', 'Aristotle'],
+        'Choose your panel of advisors:',
+        ['Gandhi', 'Stalin', 'Plato', 'Confucius', 'Karl Marx', 'Epicurus', 'Friedrich Nietzsche', 'Socrates', 'Aristotle', 'Taylor Swift'],
         ['Gandhi', 'Stalin', 'Plato'])
         btnResult = st.button("Go!")
     
