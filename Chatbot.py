@@ -11,15 +11,20 @@ with st.sidebar:
         'What are your favorite colors',
         ['Gandhi', 'Stalin', 'Plato', 'Confucius', 'Karl Marx', 'Epicurus', 'Friedrich Nietzsche', 'Socrates', 'Aristotle'],
         ['Gandhi', 'Stalin', 'Plato'])
-    
-if "messages" not in st.session_state:
+        st.button("Go!", on_click=fresh_chat)
+        
+def fresh_chat():
     st.session_state["messages"] = []
+    options_str = ', '.join(options)
     system_message = {
         "role": "system",
         #"content": "Respond as each of these three personas to each prompt: \nPlato: and respond how Plato would respond\nStalin: and respond how Stalin would respond\nGandhi: and respond how Gandhi would respond. You should respond in the first person for each of these three personas.",
-        "content": "You are an award winning novelist simulating a conversation between" + options + " about the topic or question posed by the user. After the three responses, give one response from one persona to another's answer.",
+        "content": "You are an award winning novelist simulating a conversation between" + options_str + " about the topic or question posed by the user. After the three responses, give one response from one persona to another's answer.",
     }
     st.session_state.messages.append(system_message)
+    
+if "messages" not in st.session_state:
+    fresh_chat()
 
 with st.form("chat_input", clear_on_submit=True):
     a, b = st.columns([4, 1])
