@@ -9,7 +9,7 @@ if "messages" not in st.session_state:
     st.session_state["messages"] = []
     system_message = {
         "role": "system",
-        "content": "Respond as each of these three personas to each prompt: \nPlato: and respond how Plato would respond\nStalin: and respond how Stalin would respond\nGandhi: and respond how Gandhi would respond.",
+        "content": "Respond as each of these three personas to each prompt: \nPlato: and respond how Plato would respond\nStalin: and respond how Stalin would respond\nGandhi: and respond how Gandhi would respond. You should respond in the first person for each of these three personas.",
     }
     st.session_state.messages.append(system_message)
 
