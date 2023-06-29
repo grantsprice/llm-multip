@@ -3,6 +3,7 @@ import streamlit as st
 from streamlit_chat import message
 
 st.title("💬 Council of Advisors GPT")
+st.header("Choose your council on the left and ask away!")
 openai_api_key = st.secrets["chatbot_api_key"]
 
 with st.sidebar:
