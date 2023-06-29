@@ -2,7 +2,7 @@ import openai
 import streamlit as st
 from streamlit_chat import message
 
-st.title("💬 Multip GPT")
+st.title("💬 Council of Advisors GPT")
 openai_api_key = st.secrets["chatbot_api_key"]
 
 with st.sidebar:
