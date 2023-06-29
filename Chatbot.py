@@ -10,7 +10,7 @@ with st.sidebar:
         st.header("Configuration")
         options = st.multiselect(
         'Choose your panel of advisors:',
-        ['Gandhi', 'Stalin', 'Plato', 'Confucius', 'Karl Marx', 'Epicurus', 'Friedrich Nietzsche', 'Socrates', 'Aristotle', 'Taylor Swift'],
+        ['Gandhi', 'Stalin', 'Plato', 'Confucius', 'Karl Marx', 'Epicurus', 'Friedrich Nietzsche', 'Socrates', 'Aristotle', 'Albert Einstein', 'Charles Darwin'],
         ['Gandhi', 'Stalin', 'Plato'])
         btnResult = st.button("Go!")
     
